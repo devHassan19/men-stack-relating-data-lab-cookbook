@@ -1,0 +1,27 @@
+<!-- views/listings/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All foodss</title>
+</head>
+
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+    <h1>Here's all the foodss</h1>
+    <a href="/foods/new">Add a New foods</a>
+
+    <ul>
+      <% Foods.forEach((foods)=> { %>
+        <li>
+          The foods name is <%= foods.name %> owned by <%= foods.owner.username %>.
+              <a href="/foods/<%= foods._id %>">View more details.</a>
+        </li>
+        <% }) %>
+    </ul>
+</body>
+
+</html>
