@@ -57,7 +57,7 @@ router.post('/sign-in', async (req, res) => {
       _id: userInDatabase._id
     }
     req.session.message = 'User logged in successfully'
-    res.redirect('/')
+    res.redirect('/recipes')
   } catch (error) {
     console.log(error)
     req.session.message = 'Pleas try again later '

@@ -10,9 +10,10 @@ const authController = require('./controllers/auth.js')
 const session = require('express-session')
 const isSignIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view.js')
-const foodsController = require('./controllers/foods.js')
+const recipesController = require('./controllers/recipes.js')
+const ingredientsController = require('./controllers/ingredients.js')
 
-const port = process.env.PORT ? process.env.PORT : '3000'
+const port = process.env.PORT ? process.env.PORT : '3001'
 mongoose.connect(process.env.MONGODB_URI)
 
 mongoose.connection.on('connected', () => {
@@ -42,9 +43,11 @@ app.use((req, res, next) => {
   }
   next()
 })
-app.use('/foods', isSignIn, foodsController)
-app.use('/auth', authController)
 
+app.use('/recipes', isSignIn, recipesController)
+app.use('/ingredients', isSignIn, ingredientsController)
+
+app.use('/auth', authController)
 //---------------Routes----------------------//
 app.get('/', async (req, res) => {
   res.render('index.ejs')

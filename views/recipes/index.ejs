@@ -6,19 +6,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All foodss</title>
+  <title>All recipess</title>
 </head>
 
 <body>
   <%- include('../partials/_navbar.ejs') %>
-    <h1>Here's all the foodss</h1>
-    <a href="/foods/new">Add a New foods</a>
+    <h1>Here's all the recipess</h1>
+    <a href="/recipes/new">Add a New recipes</a>
 
     <ul>
-      <% Foods.forEach((foods)=> { %>
+      <% Recipe.forEach((recipe)=> { %>
         <li>
-          The foods name is <%= foods.name %> owned by <%= foods.owner.username %>.
-              <a href="/foods/<%= foods._id %>">View more details.</a>
+          The recipes name is <%= recipe.name %> owned by <%= recipe.owner.username %>.
+              <a href="/recipes/<%= recipe._id %>">View more details.</a>
         </li>
         <% }) %>
     </ul>

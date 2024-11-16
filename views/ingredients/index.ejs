@@ -1,0 +1,27 @@
+<!-- views/listings/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Ingredient</title>
+</head>
+
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+    <h1>Here's all the ingredients</h1>
+    <a href="/ingredients/new">Add a New Ingredient</a>
+
+    <ul>
+      <% Ingredient.forEach((ingredient)=> { %>
+        <li>
+          The Ingredient name is <%= ingredient.name %> owned by <%= ingredient.owner.username %>.
+              <a href="/ingredients/<%= ingredient._id %>">View more details.</a>
+        </li>
+        <% }) %>
+    </ul>
+</body>
+
+</html>

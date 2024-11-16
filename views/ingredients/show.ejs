@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= Ingredient.name %>
+  </title>
+</head>
+
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+
+    <h1>A ingredients name <%= Ingredient.name %>
+    </h1>
+
+    <h2>Owner</h2>
+    <% if (Ingredient.owner._id.equals(user._id)) { %>
+      <p>You own this!</p>
+      <form action="/ingredients/<%= Ingredient._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete this ingredients</button>
+      </form>
+
+      <a href="/ingredients/<%= Ingredient._id %>/edit">Edit this ingredients</a>
+      <% } else { %>
+        <p>You don't own this, <%= Ingredient.owner.username %> does!</p>
+        <% } %>
+</body>
+
+</body>
+
+</html>
